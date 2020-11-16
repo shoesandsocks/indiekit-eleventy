@@ -1,0 +1,34 @@
+---
+title: indiekit-eleventy.rich-text.net
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="Description" content="{{ metadata.description }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:title" content="{{ title }}"/>
+        <meta property="og:url" content="{{ page.url }}"/>
+        <meta property="og:type" content="blog"/>
+        <meta property="og:description" content="{{ metadata.description }}"/>
+        <meta property="og:image" content="https://www.porknachos.com/files/naviavi.jpg"/>
+
+        <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+        <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+        <link rel="micropub" href="https://indiekit-eleventy.herokuapp.net/micropub"/>
+        <link href="https://github.com/shoesandsocks" rel="me authn">
+
+        <title>{{ title }}</title>
+        {% set css %}
+        {% include "css.css" %}
+        {% endset %}
+        <style>
+            {{css | cssmin | safe}}
+        </style>
+
+    </head>
+    <body>
+        {{ content | safe }}
+    </body>
+</html>
