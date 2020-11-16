@@ -14,7 +14,7 @@ So I thought I'd experiment with going the other way 'round. Install
 a full-featured server, whip up a bare-bones blog repository,
 and work "up" from there, accepting the server's defaults along the way. (Indiekit provides at least two different presets, for Hugo and Jekyll. I picked Jekyll at random.)
 
-If the initial commits work, my plan is to have the "empty" eleventy blog become a Netlify-powered subdomain of my existing blog. I think it'll be `indiekit-eleventy.rich-text.net`.
+If the initial commits work, my plan is to have the "empty" eleventy blog become a Netlify-powered subdomain of my existing blog. I think it'll be [`indiekit-eleventy.rich-text.net`](https://indiekit-eleventy.rich-text.net/). Update: yes.
 
 I hope to put the Indiekit-powered backend on Heroku. (Despite the headaches mentioned above, I *have* got an Indiekit-powered endpoint for my main blog running on my own server in lieu of Heroku, but I'd just as soon keep this experiment separated from that...)
 
