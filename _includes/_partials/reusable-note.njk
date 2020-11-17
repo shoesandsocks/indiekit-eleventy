@@ -1,0 +1,13 @@
+{% if hideLink === true %}
+    <article class="item--contained item--alone">
+        <p class="note-date">{{ date | simpleDate }}</p>
+        {{ content | safe }}
+    </article>
+{% else %}
+    <article class="item--contained">
+        <a href="{{ url }}">
+            <p class="note-date">{{ date | simpleDate }}</p>
+        </a>
+        {{ content | safe }}
+    </article>
+{% endif %}

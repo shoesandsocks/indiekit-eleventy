@@ -3,7 +3,16 @@ layout: layout.njk
 ---
 <div class="wrap">
     <h1 class="visually-hidden">indiekit + eleventy</h1>
-    <section>
+    <p>
         hello. I don't know what to put here until I get some content via indiekit's Jekyll plugin...
-    </section>
+    </p>
+    <hr/>
+    <main class="grid">
+        {% for note in collections.notes %}
+            {% set date = note.date %}
+            {% set url = note.url %}
+            {% set content = note.template.frontMatter.content %}
+            {% include "_partials/reusable-note.njk" %}
+        {% endfor %}
+    </main>
 </div>

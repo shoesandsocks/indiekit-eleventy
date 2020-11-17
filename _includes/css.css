@@ -18,6 +18,7 @@ hr {
   --black: #2d2d2d;
   --grey: #888;
   --theme: rgb(42, 55, 83);
+  --maxwidth: 400px;
 }
 
 body {
@@ -57,4 +58,43 @@ iframe {
   border-left: 1px solid var(--black);
   margin: auto;
   padding: 1rem;
+}
+
+.single-item-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* via Ian Gloude https://codepen.io/igloude/pen/pPVPxP?editors=0100 */
+.grid {
+  display: grid;
+  grid-template-columns:
+    [viewport-start] minmax(1em, 1fr)
+    [container-start] minmax(0, 30em)
+    [container-end] minmax(1em, 1fr) [viewport-end];
+  grid-auto-rows: min-content;
+}
+
+.item--contained {
+  grid-column: container;
+  margin-top: 1rem;
+}
+.item--alone {
+  margin-top: 10rem;
+}
+
+.item--full {
+  grid-column: viewport;
+  display: inherit;
+  grid-template-columns: inherit;
+}
+.item--full > * {
+  grid-column: container;
+}
+
+.article {
+  width: 100%;
+  max-width: var(--maxwidth);
+}
+.article__note {
 }
