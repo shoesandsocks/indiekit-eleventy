@@ -1,14 +1,14 @@
 <article class="h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
     {% if hideLink === true %}
-        <h1 class="p-name">{{ title }}</h1>
+        <time class="dt-published note-date">{{ date | simpleDate }}</time>
     {% else %}
         <a href="{{ url }}">
-            <h1 class="p-name">{{ title }}</h1>
+            <time class="dt-published note-date">{{ date | simpleDate }}</time>
         </a>
     {% endif %}
-    <time class="dt-published note-date">{{ date | simpleDate }}</time>
-    <div class="e-content">
+    <p class="p-content">
         {{ content | safe }}
-    </div>
+    </p>
+    <a href="{{ bookmarkOf }}">{{ title }}</a>
     <a class="u-author visually-hidden" href="/">rich</a>
 </article>

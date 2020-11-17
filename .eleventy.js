@@ -21,8 +21,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("everything", function (collection) {
     const x = collection.getFilteredByTag("notes");
     const y = collection.getFilteredByTag("articles");
-    const both = x.concat(y).sort((a, b) => a.date - b.date);
-    return both;
+    const z = collection.getFilteredByTag("bookmarks");
+    const all = x
+      .concat(y)
+      .concat(z)
+      .sort((a, b) => a.date - b.date);
+    return all;
   });
   eleventyConfig.addPassthroughCopy("favicon.ico");
   return {

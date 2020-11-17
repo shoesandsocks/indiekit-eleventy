@@ -2,9 +2,9 @@
 layout: layout.njk
 ---
 <div class="wrap">
-    <h1 class="visually-hidden">indiekit + eleventy</h1>
+    <h1>indiekit + eleventy</h1>
     <p>
-        hello. I don't know what to put here until I get some content via indiekit's Jekyll plugin...
+        hello. This is an Eleventy-based blog using Indiekit's Jekyll plugin...
     </p>
     <hr/>
     <main class="grid">
@@ -13,8 +13,10 @@ layout: layout.njk
             {% set url = item.url %}
             {% set content = item.template.frontMatter.content %}
             {% set title = item.template.frontMatter.data.title %}
-
-            {% if title === "indiekit-eleventy.rich-text.net" %}
+            {% set bookmarkOf = item.template.frontMatter.data["bookmark-of"] %}
+            {% if bookmarkOf !== undefined %}
+                {% include "_partials/reusable-bookmark.njk" %}
+            {% elseif title === "indiekit-eleventy.rich-text.net" %}
                 {% include "_partials/reusable-note.njk" %}
             {% else %}
                 {% include "_partials/reusable-article.njk" %}
