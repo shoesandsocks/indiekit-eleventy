@@ -18,6 +18,12 @@ module.exports = function (eleventyConfig) {
     console.log(obj);
     // return JSON.stringify(obj, null, 4);
   });
+  eleventyConfig.addCollection("everything", function (collection) {
+    const x = collection.getFilteredByTag("notes");
+    const y = collection.getFilteredByTag("articles");
+    const both = x.concat(y).sort((a, b) => a.date - b.date);
+    return both;
+  });
   eleventyConfig.addPassthroughCopy("favicon.ico");
   return {
     passthroughFileCopy: true,

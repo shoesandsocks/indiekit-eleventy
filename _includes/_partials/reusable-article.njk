@@ -1,0 +1,15 @@
+<article class="h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
+    {{ title | debug }}
+    {% if hideLink === true %}
+        <h1 class="p-name">{{ title }}</h1>
+    {% else %}
+        <a href="{{ url }}">
+            <h1 class="p-name">{{ title }}</h1>
+        </a>
+    {% endif %}
+    <time class="dt-published note-date">{{ date | simpleDate }}</time>
+    <div class="e-content">
+        {{ content | safe }}
+    </div>
+    <a class="u-author visually-hidden" href="/">rich</a>
+</article>

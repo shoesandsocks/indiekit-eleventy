@@ -8,11 +8,17 @@ layout: layout.njk
     </p>
     <hr/>
     <main class="grid">
-        {% for note in collections.notes %}
-            {% set date = note.date %}
-            {% set url = note.url %}
-            {% set content = note.template.frontMatter.content %}
-            {% include "_partials/reusable-note.njk" %}
+        {% for item in collections.everything %}
+            {% set date = item.date %}
+            {% set url = item.url %}
+            {% set content = item.template.frontMatter.content %}
+            {% set title = item.template.frontMatter.data.title %}
+
+            {% if title === "indiekit-eleventy.rich-text.net" %}
+                {% include "_partials/reusable-note.njk" %}
+            {% else %}
+                {% include "_partials/reusable-article.njk" %}
+            {% endif %}
         {% endfor %}
     </main>
 </div>
