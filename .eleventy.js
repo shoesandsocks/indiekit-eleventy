@@ -22,9 +22,11 @@ module.exports = function (eleventyConfig) {
     const x = collection.getFilteredByTag("notes");
     const y = collection.getFilteredByTag("articles");
     const z = collection.getFilteredByTag("bookmarks");
+    const a = collection.getFilteredByTag("events");
     const all = x
       .concat(y)
       .concat(z)
+      .concat(a)
       .sort((a, b) => a.date - b.date);
     return all;
   });
