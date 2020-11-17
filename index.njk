@@ -18,7 +18,11 @@ layout: layout.njk
             {% set end = item.template.frontMatter.data.end %}
             {% set location = item.template.frontMatter.data.location %}
             {% if bookmarkOf !== undefined %}
-                {% include "_partials/reusable-bookmark.njk" %}
+                {% if title !== "indiekit-eleventy.rich-text.net" %}
+                    {% include "_partials/reusable-bookmark.njk"%}
+                {% else %}
+                    {% include "_partials/reusable-like.njk" %}
+                {% endif %}
             {% elseif start !== undefined %}
                 {% include "_partials/reusable-event.njk" %}
             {% elseif title === "indiekit-eleventy.rich-text.net" %}

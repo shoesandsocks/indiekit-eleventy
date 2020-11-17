@@ -18,15 +18,25 @@ module.exports = function (eleventyConfig) {
     console.log(obj);
     // return JSON.stringify(obj, null, 4);
   });
+  /* amazingly, a convo between the two
+     creators whose work I'm mashing together in this project
+     https://github.com/11ty/eleventy/issues/567 
+  */
+  eleventyConfig.addNunjucksFilter("getVarFromString", function (varName) {
+    return this.getVariables()[varName];
+  });
+
   eleventyConfig.addCollection("everything", function (collection) {
     const x = collection.getFilteredByTag("notes");
     const y = collection.getFilteredByTag("articles");
     const z = collection.getFilteredByTag("bookmarks");
     const a = collection.getFilteredByTag("events");
+    const b = collection.getFilteredByTag("likes");
     const all = x
       .concat(y)
       .concat(z)
       .concat(a)
+      .concat(b)
       .sort((a, b) => a.date - b.date);
     return all;
   });

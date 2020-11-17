@@ -6,12 +6,12 @@
             <time class="dt-published note-date">{{ date | simpleDate }}</time>
         </a>
     {% endif %}
-    <p class="p-content">
-        {{ content | safe }}
-    </p>
     {% if bookmarkOf === undefined %}
         {% set bookmarkOf = "bookmark-of" | getVarFromString() %}
     {% endif %}
-    <a href="{{ bookmarkOf }}">{{ title }}</a>
+    <p>
+        Liked:
+        <a href="{{ bookmarkOf }}">{{ bookmarkOf }}</a>
+    </p>
     <a class="u-author visually-hidden" href="/">rich</a>
 </article>
