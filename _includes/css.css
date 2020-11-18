@@ -136,3 +136,6 @@ iframe {
 .post-type-reply::before {
   content: "↪";
 }
+.post-type-checkin::before {
+  content: "📌";
+}

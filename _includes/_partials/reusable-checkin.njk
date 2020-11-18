@@ -7,7 +7,7 @@
         </a>
     {% endif %}
     <p>Checking in at
-        <a href="https://www.openstreetmap.org/#map=15/{{ checkin.latitude }}/{{ checkin.longitude }}">
+        <a href="https://www.openstreetmap.org/?mlat={{ checkin.latitude }}&mlon={{ checkin.longitude }}#map=15/{{ checkin.latitude }}/{{ checkin.longitude }}">
             <span class="p-location">{{ checkin.name }}</span>
         </a>
     </p>

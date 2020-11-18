@@ -10,7 +10,11 @@
         {% set inReplyTo = "in-reply-to" | getVarFromString() %}
     {% endif %}
     <p class="p-content">
-        Replying to
+        {% if rsvp !== undefined %}
+            RSVPing "{{ rsvp }}" to
+        {% else %}
+            Replying to
+        {% endif %}
         <a href="{{ inReplyTo }}">{{ inReplyTo }}</a>
         <br/>
         {{ content | safe }}

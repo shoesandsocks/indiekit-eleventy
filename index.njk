@@ -19,6 +19,7 @@ layout: layout.njk
             {% set location = item.template.frontMatter.data.location %}
             {% set repostOf = item.template.frontMatter.data["repost-of"] %}
             {% set inReplyTo = item.template.frontMatter.data["in-reply-to"] %}
+            {% set rsvp = item.template.frontMatter.data.rsvp %}
             {% set checkin = item.template.frontMatter.data.checkin %}
             {% if checkin !== undefined %}
                 {% include "_partials/reusable-checkin.njk" %}
