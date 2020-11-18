@@ -18,7 +18,7 @@ hr {
   --black: #2d2d2d;
   --grey: #888;
   --theme: rgb(42, 55, 83);
-  --maxwidth: 400px;
+  --maxwidth: 720px;
 }
 
 body {
@@ -70,7 +70,7 @@ iframe {
   display: grid;
   grid-template-columns:
     [viewport-start] minmax(1em, 1fr)
-    [container-start] minmax(0, 30em)
+    [container-start] minmax(0, var(--maxwidth))
     [container-end] minmax(1em, 1fr) [viewport-end];
   grid-auto-rows: min-content;
 }
@@ -91,14 +91,45 @@ iframe {
 .item--full > * {
   grid-column: container;
 }
-
-.article {
-  width: 100%;
-  max-width: var(--maxwidth);
+.h-entry,
+.h-event {
+  padding: 10px;
+  margin: 10px;
+  color: var(--black);
+  /* border-top: 1px solid var(--black); */
+  border-bottom: 1px solid var(--black);
+  position: relative;
 }
-.article__note {
+.h-entry::before,
+.h-event::before {
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
+  background: var(--black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
 .visually-hidden {
   opacity: 0;
+}
+.post-type-article {
+}
+.post-type-article::before {
+  font-size: 1.5rem;
+  content: "📯";
+}
+.post-type-bookmark::before {
+  content: "🔖";
+}
+.post-type-event::before {
+  content: "🗓";
+}
+.post-type-like::before {
+  content: "👍🏼";
+}
+.post-type-note::before {
+  content: "✏️";
+}
+.post-type-repost::before {
+  content: "♻️";
 }

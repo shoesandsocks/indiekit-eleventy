@@ -17,7 +17,10 @@ layout: layout.njk
             {% set start = item.template.frontMatter.data.start %}
             {% set end = item.template.frontMatter.data.end %}
             {% set location = item.template.frontMatter.data.location %}
-            {% if bookmarkOf !== undefined %}
+            {% set repostOf = item.template.frontMatter.data["repost-of"] %}
+            {% if repostOf !== undefined %}
+                {% include "_partials/reusable-repost.njk"%}
+            {% elseif bookmarkOf !== undefined %}
                 {% if title !== "indiekit-eleventy.rich-text.net" %}
                     {% include "_partials/reusable-bookmark.njk"%}
                 {% else %}

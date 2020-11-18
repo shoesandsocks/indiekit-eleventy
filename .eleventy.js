@@ -32,11 +32,13 @@ module.exports = function (eleventyConfig) {
     const z = collection.getFilteredByTag("bookmarks");
     const a = collection.getFilteredByTag("events");
     const b = collection.getFilteredByTag("likes");
+    const c = collection.getFilteredByTag("reposts");
     const all = x
       .concat(y)
       .concat(z)
       .concat(a)
       .concat(b)
+      .concat(c)
       .sort((a, b) => a.date - b.date);
     return all;
   });

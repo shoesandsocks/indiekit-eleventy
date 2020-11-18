@@ -1,0 +1,17 @@
+<article class="post-type-repost h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
+    {% if hideLink === true %}
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    {% else %}
+        <a href="{{ url }}">
+            <time class="dt-published">{{ date | simpleDate }}</time>
+        </a>
+    {% endif %}
+    {% if repostOf === undefined %}
+        {% set repostOf = "repost-of" | getVarFromString() %}
+    {% endif %}
+    <p>
+        Repost:
+        <a href="{{ repostOf }}">{{ repostOf }}</a>
+    </p>
+    <a class="u-author visually-hidden" href="/">rich</a>
+</article>
