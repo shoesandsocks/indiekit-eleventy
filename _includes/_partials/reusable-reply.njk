@@ -1,0 +1,19 @@
+<article class="post-type-reply h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
+    {% if hideLink === true %}
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    {% else %}
+        <a href="{{ url }}">
+            <time class="dt-published">{{ date | simpleDate }}</time>
+        </a>
+    {% endif %}
+    {% if inReplyTo === undefined %}
+        {% set inReplyTo = "in-reply-to" | getVarFromString() %}
+    {% endif %}
+    <p class="p-content">
+        Replying to
+        <a href="{{ inReplyTo }}">{{ inReplyTo }}</a>
+        <br/>
+        {{ content | safe }}
+    </p>
+    <a class="u-author visually-hidden" href="/">rich</a>
+</article>

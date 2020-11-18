@@ -133,3 +133,6 @@ iframe {
 .post-type-repost::before {
   content: "♻️";
 }
+.post-type-reply::before {
+  content: "↪";
+}

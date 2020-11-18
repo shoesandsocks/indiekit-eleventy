@@ -33,12 +33,14 @@ module.exports = function (eleventyConfig) {
     const a = collection.getFilteredByTag("events");
     const b = collection.getFilteredByTag("likes");
     const c = collection.getFilteredByTag("reposts");
+    const d = collection.getFilteredByTag("replies");
     const all = x
       .concat(y)
       .concat(z)
       .concat(a)
       .concat(b)
       .concat(c)
+      .concat(d)
       .sort((a, b) => a.date - b.date);
     return all;
   });

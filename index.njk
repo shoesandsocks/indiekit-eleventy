@@ -8,7 +8,7 @@ layout: layout.njk
     </p>
     <hr/>
     <main class="grid">
-        {% for item in collections.everything %}
+        {% for item in collections.everything | reverse %}
             {% set date = item.date %}
             {% set url = item.url %}
             {% set content = item.template.frontMatter.content %}
@@ -18,7 +18,10 @@ layout: layout.njk
             {% set end = item.template.frontMatter.data.end %}
             {% set location = item.template.frontMatter.data.location %}
             {% set repostOf = item.template.frontMatter.data["repost-of"] %}
-            {% if repostOf !== undefined %}
+            {% set inReplyTo = item.template.frontMatter.data["in-reply-to"] %}
+            {% if inReplyTo !== undefined %}
+                {% include "_partials/reusable-reply.njk" %}
+            {% elseif repostOf !== undefined %}
                 {% include "_partials/reusable-repost.njk"%}
             {% elseif bookmarkOf !== undefined %}
                 {% if title !== "indiekit-eleventy.rich-text.net" %}
