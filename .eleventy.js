@@ -34,6 +34,7 @@ module.exports = function (eleventyConfig) {
     const b = collection.getFilteredByTag("likes");
     const c = collection.getFilteredByTag("reposts");
     const d = collection.getFilteredByTag("replies");
+    const e = collection.getFilteredByTag("checkins");
     const all = x
       .concat(y)
       .concat(z)
@@ -41,6 +42,7 @@ module.exports = function (eleventyConfig) {
       .concat(b)
       .concat(c)
       .concat(d)
+      .concat(e)
       .sort((a, b) => a.date - b.date);
     return all;
   });

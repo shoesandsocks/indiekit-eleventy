@@ -1,0 +1,15 @@
+<article class="post-type-checkin h-event item--contained {% if hideLink === true %}item--alone{% endif %}">
+    {% if hideLink === true %}
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    {% else %}
+        <a href="{{ url }}">
+            <time class="dt-published">{{ date | simpleDate }}</time>
+        </a>
+    {% endif %}
+    <p>Checking in at
+        <a href="https://www.openstreetmap.org/#map=15/{{ checkin.latitude }}/{{ checkin.longitude }}">
+            <span class="p-location">{{ checkin.name }}</span>
+        </a>
+    </p>
+    <p class="p-summary">{{ content | safe }}</p>
+</article>
