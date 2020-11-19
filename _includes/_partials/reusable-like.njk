@@ -1,18 +1,15 @@
 <article class="post-type-like h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <time class="dt-published">{{ date | simpleDate }}</time>
-        </a>
-    {% endif %}
+    {# likes come in as bookmark-of via Indiekit/the index page
+    distinguishes them by the (lack of) title property in frontmatter #}
     {% if bookmarkOf === undefined %}
         {% set bookmarkOf = "bookmark-of" | getVarFromString() %}
     {% endif %}
-    <p>
+    <p class="p-summary">
         Liked:
-        <a href="{{ bookmarkOf }}">{{ bookmarkOf }}</a>
+        <a class="u-like-of" href="{{ bookmarkOf }}">{{ bookmarkOf }}</a>
     </p>
     {% include "_partials/h-card.njk" %}
+    <a href="{{ url }}" class="permalink u-url">
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    </a>
 </article>

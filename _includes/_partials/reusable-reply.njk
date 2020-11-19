@@ -1,24 +1,20 @@
 <article class="post-type-reply h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <time class="dt-published">{{ date | simpleDate }}</time>
-        </a>
-    {% endif %}
     {% if inReplyTo === undefined %}
         {% set inReplyTo = "in-reply-to" | getVarFromString() %}
     {% endif %}
-    <p class="p-content">
+    <p>
         {% if rsvp !== undefined %}
             RSVPing "{{ rsvp }}" to
         {% else %}
             Replying to
         {% endif %}
-        <a href="{{ inReplyTo }}">{{ inReplyTo }}</a>
-        <br/>
+        <a class="u-in-reply-to" href="{{ inReplyTo }}">{{ inReplyTo }}</a>
+    </p>
+    <p class="e-content p-name">
         {{ content | safe }}
     </p>
     {% include "_partials/h-card.njk" %}
+    <a href="{{ url }}" class="u-url permalink">
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    </a>
 </article>

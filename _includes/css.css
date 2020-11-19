@@ -93,10 +93,9 @@ iframe {
 }
 .h-entry,
 .h-event {
-  padding: 10px;
+  padding: 10px 10px 2rem 10px;
   margin: 10px;
   color: var(--black);
-  /* border-top: 1px solid var(--black); */
   border-bottom: 1px solid var(--black);
   position: relative;
 }
@@ -112,8 +111,13 @@ iframe {
 .visually-hidden {
   display: none;
 }
-.post-type-article {
+.permalink {
+  text-align: right;
+  display: block;
+  margin: 3rem 0 0 0;
+  font-size: 0.85rem;
 }
+
 .post-type-article::before {
   font-size: 1.5rem;
   content: "📯";

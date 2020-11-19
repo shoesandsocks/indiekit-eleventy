@@ -1,14 +1,9 @@
 <article class="post-type-note h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <time class="dt-published">{{ date | simpleDate }}</time>
-        </a>
-    {% endif %}
     <p class="p-content">
         {{ content | safe }}
     </p>
     {% include "_partials/h-card.njk" %}
+    <a href="{{ url }}" class="permalink u-url">
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    </a>
 </article>

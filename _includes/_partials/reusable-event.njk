@@ -1,12 +1,7 @@
 <article class="post-type-event h-event item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <h1 class="p-name">{{ title }}</h1>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <h1 class="p-name">{{ title }}</h1>
-        </a>
-    {% endif %}
+    <h1>
+        <a href="{{ url }}" class="u-url p-name">{{ title }}</a>
+    </h1>
     <p>
         From
         <time class="dt-start" datetime="{{ start }}">{{ start | simpleDate }}</time>
@@ -15,8 +10,14 @@
         {{ end | simpleDate }}
     </time>
     at
-    <span class="p-location">{{ location.name }}</span>
+    <span class="p-location">
+        {# TODO: if you were really using this youd need more robust h-card/location stuff #}
+        {{ location.name }}
+    </span>
 </p>
-<p class="p-summary">{{ content | safe }}</p>
+<p class="e-content">{{ content | safe }}</p>
 {% include "_partials/h-card.njk" %}
+<a href="{{ url }}" class="permalink u-url">
+    <time class="dt-published">{{ date | simpleDate }}</time>
+</a>
 </article>

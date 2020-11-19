@@ -1,18 +1,15 @@
 <article class="post-type-bookmark h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <time class="dt-published">{{ date | simpleDate }}</time>
-        </a>
-    {% endif %}
-    <p class="p-content">
-        {{ content | safe }}
-    </p>
     {% if bookmarkOf === undefined %}
         {% set bookmarkOf = "bookmark-of" | getVarFromString() %}
     {% endif %}
-    <a href="{{ bookmarkOf }}">{{ title }}</a>
+    <p>Bookmarked:
+        <a class="u-bookmark-of" href="{{ bookmarkOf }}">{{ title }}</a>
+    </p>
+    <p class="e-content">
+        {{ content | safe }}
+    </p>
     {% include "_partials/h-card.njk" %}
+    <a href="{{ url }}" class="u-url permalink">
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    </a>
 </article>

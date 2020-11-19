@@ -1,17 +1,16 @@
 <article class="post-type-checkin h-event item--contained {% if hideLink === true %}item--alone{% endif %}">
-    {% if hideLink === true %}
-        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    {% else %}
-        <a href="{{ url }}" class="u-url">
-            <time class="dt-published">{{ date | simpleDate }}</time>
-        </a>
-    {% endif %}
-    <p>Checking in at
-        <a href="https://www.openstreetmap.org/?mlat={{ checkin.latitude }}&mlon={{ checkin.longitude }}#map=15/{{ checkin.latitude }}/{{ checkin.longitude }}">
-            <span class="p-location">{{ checkin.name }}</span>
+    <p class="p-name">Checking in at
+        <a class="u-checkin" href="https://www.openstreetmap.org/?mlat={{ checkin.latitude }}&mlon={{ checkin.longitude }}#map=15/{{ checkin.latitude }}/{{ checkin.longitude }}">
+            <span class="p-location">
+                <data class="p-latitude" value="{{ checkin.latitude }}"></data>
+                <data class="p-longitude" value="{{ checkin.longitude }}"></data>
+                {{ checkin.name }}
+            </span>
         </a>
     </p>
-    <p class="p-summary">{{ content | safe }}</p>
+    <p class="e-content">{{ content | safe }}</p>
     {% include "_partials/h-card.njk" %}
+    <a href="{{ url }}" class="permalink u-url">
+        <time class="dt-published">{{ date | simpleDate }}</time>
+    </a>
 </article>
