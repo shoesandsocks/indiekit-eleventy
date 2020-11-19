@@ -3,7 +3,9 @@ layout: layout.njk
 ---
 <div class="wrap">
     <h1>indiekit + eleventy</h1>
+    {% set representativeHcard = true %}
     {% include "_partials/h-card.njk" %}
+    {% set representativeHcard = false %}
     <p>
         hello. This is an Eleventy-based blog using Indiekit's Jekyll plugin...
     </p>
