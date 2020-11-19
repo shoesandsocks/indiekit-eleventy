@@ -1,8 +1,15 @@
 <article class="post-type-article h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
     {% if hideLink === true %}
+        {# 
+    if hideLink, we're on the "solo" page for the entry.
+    I still need the self-link for microformats purposes. 
+    I just dont want to see it. In the else, we're on index
+    listing and need the link wrapped around title 
+    #}
+        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
         <h1 class="p-name">{{ title }}</h1>
     {% else %}
-        <a href="{{ url }}">
+        <a href="{{ url }}" class="u-url">
             <h1 class="p-name">{{ title }}</h1>
         </a>
     {% endif %}

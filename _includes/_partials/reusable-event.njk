@@ -1,8 +1,9 @@
 <article class="post-type-event h-event item--contained {% if hideLink === true %}item--alone{% endif %}">
     {% if hideLink === true %}
+        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
         <h1 class="p-name">{{ title }}</h1>
     {% else %}
-        <a href="{{ url }}">
+        <a href="{{ url }}" class="u-url">
             <h1 class="p-name">{{ title }}</h1>
         </a>
     {% endif %}

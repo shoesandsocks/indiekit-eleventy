@@ -1,8 +1,9 @@
 <article class="post-type-repost h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
     {% if hideLink === true %}
+        <a href="{{ url }}" class="u-url visually-hidden">{{ url }}</a>
         <time class="dt-published">{{ date | simpleDate }}</time>
     {% else %}
-        <a href="{{ url }}">
+        <a href="{{ url }}" class="u-url">
             <time class="dt-published">{{ date | simpleDate }}</time>
         </a>
     {% endif %}
