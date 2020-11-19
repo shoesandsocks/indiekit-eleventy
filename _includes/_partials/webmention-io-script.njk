@@ -1,4 +1,51 @@
-<script>
-    const url = window.location.href;
-    fetch(`https://webmention.io/api/mentions.jf2?target=${url}`).then(r => console.log(r))
+<script type="module">
+    import {html, render} from 'https://unpkg.com/lit-html?module';
+
+    const href = window.location.href;
+    // next line for testing locally
+    const nonlocal = href.replace("http://localhost:8080/", "https://indiekit-eleventy.rich-text.net/");
+    const url = encodeURIComponent(nonlocal);
+    const webmentionUrl = `https://webmention.io/api/mentions.jf2?target=${url}`;
+
+    const singleTemplate = item => html `
+  <div key=${item["wm-id"]} class="microblog-comment">
+    <div class="microblog-profile">
+      <a class="microblog-avi-container" href="${item.author.url || item
+        .url}">
+        <img loading="lazy" src="${item
+        .author
+        .photo}" height="30" width="30" class="microblog-avatar" data-src="${item
+        .author
+        .avatar}" />
+        <span class="microblog-user">${item
+        .author
+        .name}</span>
+      </a>
+      <a class="microblog-datetime" href="${item
+        .url}">
+        <p>${new Date(item.published)
+        .toLocaleDateString()} ${new Date(item.published)
+        .toLocaleTimeString()}</p>
+      </a>
+    </div>
+    <div class="microblog-comment-content" .innerHTML="${item
+        .content
+        .html}"></div>
+  </div>`;
+
+    const wmTemplate = (array) => html `<h4>Webmentions:</h4>${array
+        .reverse()
+        .map(item => singleTemplate(item))}`;
+
+    fetch(webmentionUrl).then(response => {
+        if (response.status === 200) {
+            response
+                .json()
+                .then(result => {
+                    if (result.children !== null && result.children.length > 0) {
+                        render(wmTemplate(result.children), document.getElementById("webmentions"));
+                    }
+                })
+        }
+    });
 </script>

@@ -1,5 +1,8 @@
 const CleanCSS = require("clean-css");
 const { DateTime } = require("luxon");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
+const getWebmentionsForUrl = require("./funcs/webmention-filters");
 
 module.exports = function (eleventyConfig) {
   // minify css (see Hot Tip on eleventy docs)
@@ -7,6 +10,13 @@ module.exports = function (eleventyConfig) {
     return new CleanCSS({}).minify(code).styles;
   });
 
+  // not using RSS but this package includes "absoluteUrl" filter
+  // that I use in the webmention script
+  eleventyConfig.addPlugin(pluginRss);
+  // related
+  eleventyConfig.addFilter("getWebmentionsForUrl", getWebmentionsForUrl);
+
+  // some date-related filters
   eleventyConfig.addFilter("simpleDate", function (date) {
     return DateTime.fromJSDate(new Date(date), {
       zone: "America/New_York",
@@ -19,6 +29,8 @@ module.exports = function (eleventyConfig) {
       zone: "America/New_York",
     });
   });
+
+  // a cheap debug filter
   eleventyConfig.addFilter("debug", function (obj) {
     console.log(obj);
     // return JSON.stringify(obj, null, 4);
