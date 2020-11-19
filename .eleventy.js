@@ -14,6 +14,11 @@ module.exports = function (eleventyConfig) {
       .toLocaleString(DateTime.DATETIME_MED)
       .replace(/, \d{4}/, "");
   });
+  eleventyConfig.addFilter("ISOtz", function (date) {
+    return DateTime.fromJSDate(new Date(date), {
+      zone: "America/New_York",
+    });
+  });
   eleventyConfig.addFilter("debug", function (obj) {
     console.log(obj);
     // return JSON.stringify(obj, null, 4);
