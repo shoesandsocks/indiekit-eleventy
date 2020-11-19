@@ -1,9 +1,7 @@
 <article class="post-type-note h-entry item--contained {% if hideLink === true %}item--alone{% endif %}">
-    <p class="p-content">
+    <p class="e-content">
         {{ content | safe }}
     </p>
     {% include "_partials/h-card.njk" %}
-    <a href="{{ url }}" class="permalink u-url">
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    </a>
+    {% include "_partials/permalink.njk" %}
 </article>

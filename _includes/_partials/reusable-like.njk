@@ -9,7 +9,5 @@
         <a class="u-like-of" href="{{ bookmarkOf }}">{{ bookmarkOf }}</a>
     </p>
     {% include "_partials/h-card.njk" %}
-    <a href="{{ url }}" class="permalink u-url">
-        <time class="dt-published">{{ date | simpleDate }}</time>
-    </a>
+    {% include "_partials/permalink.njk" %}
 </article>

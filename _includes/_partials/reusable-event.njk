@@ -17,7 +17,5 @@
 </p>
 <p class="e-content">{{ content | safe }}</p>
 {% include "_partials/h-card.njk" %}
-<a href="{{ url }}" class="permalink u-url">
-    <time class="dt-published">{{ date | simpleDate }}</time>
-</a>
+{% include "_partials/permalink.njk" %}
 </article>
