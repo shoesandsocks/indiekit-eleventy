@@ -110,7 +110,7 @@ iframe {
   -webkit-text-fill-color: transparent;
 }
 .visually-hidden {
-  opacity: 0;
+  display: none;
 }
 .post-type-article {
 }

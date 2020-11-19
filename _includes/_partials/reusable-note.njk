@@ -9,5 +9,5 @@
     <p class="p-content">
         {{ content | safe }}
     </p>
-    <a class="u-author visually-hidden" href="/">rich</a>
+    {% include "_partials/h-card.njk" %}
 </article>
