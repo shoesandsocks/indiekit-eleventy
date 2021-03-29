@@ -143,3 +143,39 @@ iframe {
 .post-type-checkin::before {
   content: "📌";
 }
+.webmentions {
+  padding: 0 1rem;
+}
+.webmentions > form {
+  border-top: 1px solid var(--black);
+  padding: 1rem 0 4rem 0;
+}
+#wm-submit {
+  font-size: 1rem;
+  padding: 2px 16px;
+  background: none;
+  border: 1px solid var(--black);
+  cursor: pointer;
+}
+#wm-input {
+  margin-left: 4px;
+  font-size: 1rem;
+}
+#webmention-display {
+  padding-bottom: 4rem;
+}
+.microblog-profile {
+  display: flex;
+  align-items: center;
+}
+.microblog-avatar {
+  border: 1px solid var(--black);
+  border-radius: 8px;
+  margin-right: 0.5rem;
+}
+.microblog-datetime {
+  text-align: right;
+  width: 100%;
+  display: block;
+  font-size: 0.85rem;
+}

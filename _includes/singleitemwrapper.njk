@@ -3,9 +3,9 @@ layout: layout.njk
 ---
 <div class="single-item-wrapper grid">
     {{content | safe }}
-    <div class="item--contained">
-        {% include "_partials/webmention-form.njk" %}
+    <div class="item--contained webmentions">
         {% include "_partials/webmention-display.njk" %}
+        {% include "_partials/webmention-form.njk" %}
         {% include "_partials/webmention-io-script.njk" %}
     </div>
 </div>

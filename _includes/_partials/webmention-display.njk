@@ -3,7 +3,7 @@
 {% endset %}
 {% set mentions = webmentions | getWebmentionsForUrl(noteUrl) %}
 
-<div id="webmentions">
+<div id="webmention-display">
     {% if mentions.length > 0 %}
         <h4>Webmentions</h4>
         {% for mention in mentions | reverse %}
@@ -12,21 +12,20 @@
                 <div class="microblog-profile">
                     <a class="microblog-avi-container" href="{{ authorImage }}">
                         <img loading="lazy" src="{{mention.author.photo}}" height="30" width="30" class="microblog-avatar" data-src="{{mention.author.photo}}"/>
-                        <span class="microblog-user">{{mention.author.name}}</span>
                     </a>
-                    <a class="microblog-datetime" href="{{mention.url}}">
-                        <time datetime="{{ mention.published | withTZ }}">
-                            {{ mention.published | toLocaleDateString }}
-                            {{ mention.published | toLocaleTimeString }}
-                        </time>
+                    <a href="{{ mention.url }}">
+                        <span class="microblog-user">{{mention.author.name}}</span>
                     </a>
                 </div>
                 <div class="microblog-comment-content">
                     {{ mention.content.html | safe }}
                 </div>
             </div>
+            <a class="microblog-datetime" href="{{mention.url}}">
+                <time datetime="{{ mention.published | ISOtz }}">
+                    {{ mention.published | simpleDate }}
+                </time>
+            </a>
         {% endfor %}
-    </div>
-
-{% endif %}
+    {% endif %}
 </div>
